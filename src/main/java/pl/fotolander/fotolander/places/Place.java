@@ -1,10 +1,16 @@
 package pl.fotolander.fotolander.places;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import pl.fotolander.fotolander.MapOfPlaces.Pin;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Place {
 
@@ -12,38 +18,8 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
-    public Place(Long id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public Place() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    @OneToOne(cascade = CascadeType.ALL)
+    private List<Pin> pins;
 
 
-    @Override
-    public String toString() {
-        return "Place{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
