@@ -24,14 +24,14 @@
 
     var placePin = [[${placePin}]];
 
-    var map = L.map('map').setView([placePin.longitude, placePin.latitude, placePin.message], 7); //zoom level od 1 do 30 tu jest 13
+    var map = L.map('map').setView([placePin.longitude, placePin.latitude, placePin.pinMessage], 7); //zoom level od 1 do 30 tu jest 13
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     L.marker([placePin.longitude, placePin.latitude]).addTo(map) //marker to ta pinezka
-        .bindPopup(placePin.message)
+        .bindPopup(placePin.pinMessage)
         .openPopup();
 
     var popup = L.popup();

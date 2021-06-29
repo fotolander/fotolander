@@ -1,25 +1,28 @@
 package pl.fotolander.fotolander.places;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import pl.fotolander.fotolander.MapOfPlaces.Pin;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
+@Embeddable
 public class Place {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToMany (cascade = CascadeType.ALL)
-    private List<Pin> pins;
-
+    private String address;
+    private String description;
+    private double longitude;
+    private double latitude;
+    private String pinMessage;
 
 }
