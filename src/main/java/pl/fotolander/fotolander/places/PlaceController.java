@@ -3,8 +3,8 @@ package pl.fotolander.fotolander.places;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
 @RequestMapping("/places")
+@RestController
 public class PlaceController {
 
     private final PlaceService placeService;
@@ -19,18 +19,18 @@ public class PlaceController {
         placeService.findAllPlaces();
     }
 
-    @PutMapping
-    public void addPlace(Place place){
-        placeService.addPlace(place);
-    }
-
-    @GetMapping("/{name}")
-    public void getSelectedPlaceByName(@PathVariable String name){
-        placeService.findPlaceByName(name);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deletePlaceById(@PathVariable Long id){
-        placeService.deletePlaceById(id);
-    }
+//    @PutMapping
+//    public void addPlace(Place place){
+//        placeService.addPlace(place);
+//    }
+//
+//    @GetMapping("/{name}")
+//    public void getSelectedPlaceByName(@PathVariable String name){
+//        placeService.findPlaceByName(name);
+//    }
+//
+//    @DeleteMapping("/{id}")
+//    public void deletePlaceById(@PathVariable Long id){
+//        placeService.deletePlaceById(id);
+//    }
 }

@@ -16,35 +16,35 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public Place findPlaceByName(String name){
-        return placeRepository.findAll().stream()
-                .filter(place -> place.getName().equals(name))
-                .findFirst()
-                .orElseThrow(() -> {
-                    throw new NoSuchElementException("Nie znaleziono miejsca o podanej nazwie");
-                });
-    }
+//    public Place findPlaceByName(String name){
+//        return placeRepository.findAll().stream()
+//                .filter(place -> place.getName().equals(name))
+//                .findFirst()
+//                .orElseThrow(() -> {
+//                    throw new NoSuchElementException("Nie znaleziono miejsca o podanej nazwie");
+//                });
+//    }
 
     public List<Place> findAllPlaces(){
         return placeRepository.findAll();
     }
-
-    public Place addPlace(Place place){
-        placeRepository.findByName(place.getName()).stream().findAny()
-                .ifPresent(v->{
-            throw new IllegalArgumentException(String.format("Miejsce o podanej nazwie $s już istnieje", place.getName()));
-        });
-        placeRepository.save(place);
-        return place;
-
-    }
-
-    public Place deletePlaceById(Long id){
-        Place place = placeRepository.findById(id)
-                .orElseThrow(() -> {
-                    throw new NoSuchElementException("Nie znaleziono miejsca o podanym id");
-                });
-        placeRepository.delete(place);
-        return place;
-    }
+//
+//    public Place addPlace(Place place){
+//        placeRepository.findByName(place.getName()).stream().findAny()
+//                .ifPresent(v->{
+//            throw new IllegalArgumentException(String.format("Miejsce o podanej nazwie $s już istnieje", place.getName()));
+//        });
+//        placeRepository.save(place);
+//        return place;
+//
+//    }
+//
+//    public Place deletePlaceById(Long id){
+//        Place place = placeRepository.findById(id)
+//                .orElseThrow(() -> {
+//                    throw new NoSuchElementException("Nie znaleziono miejsca o podanym id");
+//                });
+//        placeRepository.delete(place);
+//        return place;
+//    }
 }

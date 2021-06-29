@@ -1,17 +1,24 @@
 package pl.fotolander.fotolander.places;
 
-import pl.fotolander.fotolander.MapOfPlaces.Pin;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Place {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private Pin pin;
 
-    public Place(Long id, String name, Pin pin) {
+    public Place(Long id, String name) {
         this.id = id;
         this.name = name;
-        this.pin = pin;
+    }
+
+    public Place() {
     }
 
     public Long getId() {
@@ -20,11 +27,7 @@ public class Place {
 
     public void setId(Long id) {
         this.id = id;
-    }
 
-    public Place(String name, Pin pin) {
-        this.name = name;
-        this.pin = pin;
     }
 
     public String getName() {
@@ -35,20 +38,12 @@ public class Place {
         this.name = name;
     }
 
-    public Pin getPin() {
-        return pin;
-    }
-
-    public void setPin(Pin pin) {
-        this.pin = pin;
-    }
 
     @Override
     public String toString() {
         return "Place{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", pin=" + pin +
                 '}';
     }
 }
