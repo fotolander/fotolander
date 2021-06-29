@@ -11,7 +11,7 @@ public class MapController {
 
     @GetMapping
     public String getMap(Model model) {
-        model.addAttribute("placePin", new Pin(50.945, 15.423, "WITAMY W MLĄDZ"));
+        model.addAttribute("placePin", new Pin(1, 50.945, 15.423, "WITAMY W MLĄDZ"));
         return "map";
     }
 }
