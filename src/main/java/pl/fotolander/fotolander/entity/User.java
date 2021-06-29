@@ -16,6 +16,7 @@ public class User {
     private long id;
     //generowanie identyfikatora automatycznie w momencie zapisu bazy danych
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private String EmailAddress;
     private String password;
     private boolean isRegistered;
