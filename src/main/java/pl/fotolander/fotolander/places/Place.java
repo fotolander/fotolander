@@ -18,7 +18,7 @@ public class Place {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToMany (cascade = CascadeType.ALL)
     private List<Pin> pins;
 
 
