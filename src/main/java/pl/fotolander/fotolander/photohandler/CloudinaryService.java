@@ -20,6 +20,7 @@ public class CloudinaryService {
 
     @Autowired
     public CloudinaryService(Cloudinary cloudinaryConfig) {
+
         this.cloudinaryConfig = cloudinaryConfig;
     }
 
