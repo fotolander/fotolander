@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Entity
 @Builder
 @Embeddable
-public class Place {
+public class Place implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
