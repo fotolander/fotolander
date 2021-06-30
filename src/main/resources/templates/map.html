@@ -54,7 +54,7 @@
     }).addTo(map);
 
     L.marker([placePin.longitude, placePin.latitude]).addTo(map) //marker to ta pinezka
-        .bindPopup(placePin.pinMessage)
+        .bindPopup(placePin.name)
         .openPopup();
 
     var popup = L.popup();

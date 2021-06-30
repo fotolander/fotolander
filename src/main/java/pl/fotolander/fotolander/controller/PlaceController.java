@@ -30,8 +30,8 @@ public class PlaceController {
     }
 
     @GetMapping("/{name}")
-    public void getSelectedPlaceByName(@PathVariable String name){
-        placeService.findPlaceByName(name);
+    public Place getSelectedPlaceByName(@PathVariable String name){
+        return placeService.findPlaceByName(name);
     }
 
     @DeleteMapping("/{id}")
