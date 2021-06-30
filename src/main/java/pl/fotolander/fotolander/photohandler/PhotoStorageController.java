@@ -25,8 +25,8 @@ public class PhotoStorageController {
 
 
     @PostMapping("/upload")
-    public String uploadPhoto(@RequestParam("photo")MultipartFile photo) {
+    public String uploadPhoto(@RequestParam("file")MultipartFile photo) {
         photoStorageService.uploadPhoto(new UploadPhoto(photo, photo.getOriginalFilename()));
-        return "redirect:/";
+        return "redirect:/photos";
     }
 }
