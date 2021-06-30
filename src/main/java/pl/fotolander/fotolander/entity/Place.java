@@ -28,9 +28,6 @@ public class Place {
     private double latitude;
     private double longitude;
 
-    @EqualsAndHashCode.Exclude
-    @ManyToOne
-    private Pin pin;
 
 
 }
