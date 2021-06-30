@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>map</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
           integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
@@ -18,20 +20,41 @@
     </style>
 </head>
 <body>
+<h1 th:text="${something}"/>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">Miejsce</th>
+        <th scope="col">Opis</th>
+        <th scope="col">Adres</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="place: ${places}">
+        <td th:text="${place.name}"/>
+        <td th:text="${place.description}"/>
+        <td th:text="${place.address}"/>
+    </tr>
+    </tbody>
+</table>
+
 <div id="map"></div>
 
 <script th:inline="javascript">
 
+    var places = [[${places}]];
+
     var placePin = [[${placePin}]];
 
-    var map = L.map('map').setView([placePin.longitude, placePin.latitude, placePin.message], 7); //zoom level od 1 do 30 tu jest 13
+    var map = L.map('map').setView([placePin.longitude, placePin.latitude, placePin.name], 7); //zoom level od 1 do 30 tu jest 13
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
     L.marker([placePin.longitude, placePin.latitude]).addTo(map) //marker to ta pinezka
-        .bindPopup(placePin.message)
+        .bindPopup(placePin.pinMessage)
         .openPopup();
 
     var popup = L.popup();
@@ -43,5 +66,6 @@
     }
     map.on('click', onMapClick);
 </script>
+
 </body>
 </html>
