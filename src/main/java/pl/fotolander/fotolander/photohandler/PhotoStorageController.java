@@ -17,7 +17,7 @@ public class PhotoStorageController {
         this.photoStorageService = photoStorageService;
     }
 
-    @GetMapping("/")
+    @GetMapping("/photos")
     public String index(Model model) {
         model.addAttribute("photos", photoStorageService.getPhoto());
         return "photos";

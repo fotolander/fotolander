@@ -16,17 +16,17 @@ import java.util.Map;
 @Service
 public class CloudinaryService {
 
-private final Cloudinary cloudinary;
+    private final Cloudinary cloudinaryConfig;
 
     @Autowired
-    public CloudinaryService(Cloudinary cloudinary) {
-        this.cloudinary = cloudinary;
+    public CloudinaryService(Cloudinary cloudinaryConfig) {
+        this.cloudinaryConfig = cloudinaryConfig;
     }
 
     public String uploadPhoto(MultipartFile photo) {
         try {
             File uploadedPhoto = convertMultiPartToPhoto(photo);
-            Map uploadResult = cloudinary.uploader().upload(uploadedPhoto, ObjectUtils.emptyMap());
+            Map uploadResult = cloudinaryConfig.uploader().upload(uploadedPhoto, ObjectUtils.emptyMap());
             return uploadResult.get("url").toString();
         } catch (Exception e) {
             throw new RuntimeException(e);
