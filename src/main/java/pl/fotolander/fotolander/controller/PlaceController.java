@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.fotolander.fotolander.entity.Place;
 import pl.fotolander.fotolander.service.PlaceService;
 
+import java.util.List;
+
 @RequestMapping("/places")
 @RestController
 public class PlaceController {
@@ -17,13 +19,13 @@ public class PlaceController {
         this.placeService = placeService;
     }
 
-    @GetMapping
-    public void getAllPlaces(){
-        placeService.findAllPlaces();
+    @GetMapping("/all")
+    public List<Place> getAllPlaces(){
+        return placeService.findAllPlaces();
     }
 
-    @PutMapping
-    public void addPlace(Place place){
+    @PostMapping("/add")
+    public void addPlace(@RequestBody Place place){
         placeService.addPlace(place);
     }
 
