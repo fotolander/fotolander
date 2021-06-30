@@ -1,10 +1,4 @@
 package pl.fotolander.fotolander.entity;
-/**
- * nazwa
- * adres
- * lat / lon - współrzędne geograficzne
- * opis
- */
 
 import lombok.*;
 
