@@ -1,4 +1,4 @@
-package pl.fotolander.fotolander.photohandler;
+package pl.fotolander.fotolander.entity;
 
 public class Photo {
     private String name;

@@ -1,7 +1,9 @@
-package pl.fotolander.fotolander.photohandler;
+package pl.fotolander.fotolander.service;
 
 
 import org.springframework.stereotype.Service;
+import pl.fotolander.fotolander.entity.Photo;
+import pl.fotolander.fotolander.domain.UploadPhoto;
 
 import java.util.Collection;
 import java.util.HashMap;

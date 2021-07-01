@@ -1,6 +1,7 @@
-package pl.fotolander.fotolander.photohandler;
+package pl.fotolander.fotolander.domain;
 
 import org.springframework.web.multipart.MultipartFile;
+import pl.fotolander.fotolander.entity.Photo;
 
 public class UploadPhoto {
     private MultipartFile photo;

@@ -1,4 +1,4 @@
-package pl.fotolander.fotolander.photohandler;
+package pl.fotolander.fotolander.service;
 
 
 import com.cloudinary.Cloudinary;
