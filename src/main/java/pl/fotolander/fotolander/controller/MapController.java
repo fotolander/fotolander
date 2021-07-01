@@ -24,7 +24,7 @@ public class MapController {
 
     @GetMapping
     public String getMap(Model model) {
-        model.addAttribute("placePin", new Place(1L, "Agro", "Mladz 20", "lorem ipsum", 50.945, 15.423));
+        model.addAttribute("placePin", new Place(1L, "Agro", "Mladz 20", "lorem ipsum", 50.945, 15.423, "dolnośląskie"));
         model.addAttribute("places", placeService.findAllPlaces());
         model.addAttribute("something", "Witaj w FotolanderDemo");
         return "map";

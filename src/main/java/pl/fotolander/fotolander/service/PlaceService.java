@@ -7,7 +7,6 @@ import pl.fotolander.fotolander.repository.PlaceRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-
 @Service
 public class PlaceService {
 
@@ -34,8 +33,8 @@ public class PlaceService {
     public Place addPlace(Place place){
         placeRepository.findByName(place.getName()).stream().findAny()
                 .ifPresent(v->{
-            throw new IllegalArgumentException(String.format("Miejsce o podanej nazwie $s już istnieje", place.getName()));
-        });
+                    throw new IllegalArgumentException(String.format("Miejsce o podanej nazwie $s już istnieje", place.getName()));
+                });
         placeRepository.save(place);
         return place;
 
@@ -48,5 +47,10 @@ public class PlaceService {
                 });
         placeRepository.delete(place);
         return place;
+    }
+
+    //NEW METHOD
+    public List<Place> findPlacesByVoivodeship(String voivodeship){
+        return placeRepository.findByVoivodeship(voivodeship);
     }
 }
