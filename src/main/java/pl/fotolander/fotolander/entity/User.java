@@ -1,24 +1,24 @@
-package pl.fotolander.fotolander.entity;
-
-
-import lombok.*;
-
-import javax.persistence.*;
-
-@Data
-@Builder
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
-
-public class User {
-    @Id//dane pole jest identyfikatorem unikalnym obiektu
-    private long id;
-    //generowanie identyfikatora automatycznie w momencie zapisu bazy danych
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(unique = true)
-    private String EmailAddress;
-    private String password;
-    private boolean isRegistered;
-
-}
+//package pl.fotolander.fotolander.entity;
+//
+//
+//import jdk.jfr.Enabled;
+//import lombok.*;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.userdetails.UserDetails;
+//
+//import javax.persistence.*;
+//import java.util.Collection;
+//
+//@Data
+//@Builder
+//
+//@AllArgsConstructor
+//@NoArgsConstructor
+//public class User {
+//    @Id
+//    @Column(unique = true)
+//    private String EmailAddress;
+//    private String password;
+//    private boolean isRegistered;
+//
+//}
