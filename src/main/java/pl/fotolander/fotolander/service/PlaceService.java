@@ -1,5 +1,6 @@
 package pl.fotolander.fotolander.service;
 
+import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.fotolander.fotolander.entity.Place;
@@ -7,14 +8,17 @@ import pl.fotolander.fotolander.repository.PlaceRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+
 @Service
 public class PlaceService {
 
     private final PlaceRepository placeRepository;
+    private final JsonToGeoJsonTransformer jsonToGeoJsonTransformer;
 
     @Autowired
-    public PlaceService(PlaceRepository placeRepository) {
+    public PlaceService(PlaceRepository placeRepository, JsonToGeoJsonTransformer jsonToGeoJsonTransformer) {
         this.placeRepository = placeRepository;
+        this.jsonToGeoJsonTransformer = jsonToGeoJsonTransformer;
     }
 
     public Place findPlaceByName(String name){
@@ -30,6 +34,10 @@ public class PlaceService {
         return placeRepository.findAll();
     }
 
+    public JSONObject findAllPlacesGeoJson(){
+        return jsonToGeoJsonTransformer.transformJsonToGeoJson(placeRepository.findAll());
+    }
+
     public Place addPlace(Place place){
         placeRepository.findByName(place.getName()).stream().findAny()
                 .ifPresent(v->{
@@ -37,7 +45,6 @@ public class PlaceService {
                 });
         placeRepository.save(place);
         return place;
-
     }
 
     public Place deletePlaceById(Long id){
