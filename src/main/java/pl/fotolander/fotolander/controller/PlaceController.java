@@ -1,5 +1,6 @@
 package pl.fotolander.fotolander.controller;
 
+import org.cloudinary.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,12 @@ public class PlaceController {
     public ResponseEntity<List<Place>> getAllPlaces() {
         List<Place> allPlaces = placeService.findAllPlaces();
         return new ResponseEntity<>(allPlaces, HttpStatus.OK);
+    }
+
+    @GetMapping("/geo")
+    public ResponseEntity<JSONObject> getGeoJson(){
+        JSONObject allPlacesGeoJson = placeService.findAllPlacesGeoJson();
+        return new ResponseEntity<>(allPlacesGeoJson, HttpStatus.OK);
     }
 
     @PostMapping("/add")

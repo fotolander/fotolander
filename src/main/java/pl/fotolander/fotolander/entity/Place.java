@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 @Embeddable
@@ -26,4 +28,17 @@ public class Place implements Serializable {
     private double latitude;
     private String voivodeship;
 
+
+    public Map<String, Object> getPropertiesAsMap() {
+        Map<String, Object> properties = new HashMap<>();
+        properties.put("id", getId());
+        properties.put("name", getName());
+        properties.put("address", getAddress());
+        properties.put("description", getDescription());
+        properties.put("longitude", getLongitude());
+        properties.put("latitude", getLatitude());
+        properties.put("voivodeship", getVoivodeship());
+
+        return properties;
+    }
 }
